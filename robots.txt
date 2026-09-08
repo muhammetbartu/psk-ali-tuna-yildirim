@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xn--pskalitunayldrm-ilccb.com/sitemap.xml
