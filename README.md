@@ -25,18 +25,12 @@ python3 -m http.server 8000
 
 Ardından `http://localhost:8000` adresini açın.
 
-## Yayına almadan önce doldurulacak yer tutucular
+## Yer tutucular
 
-Aşağıdaki değerler şu an örnek. Yayına almadan önce gerçek bilgilerle
-değiştirilmelidir:
-
-| Yer tutucu | Bulunduğu yerler |
-| --- | --- |
-| `FORMSPREE_ID` | `index.html` içindeki form `action` değeri |
-
-İletişim bilgileri (e-posta, telefon, adres) gerçek değerlerle doldurulmuştur;
-`index.html` iletişim listesi ve JSON-LD, `kvkk.html` ve `script.js` içindeki
-`CONTACT_EMAIL` birlikte güncellenmelidir.
+Yer tutucu kalmadı. İletişim bilgileri ve form endpoint'i gerçek değerlerle
+doldurulmuştur. E-posta adresi değişirse `index.html` iletişim listesi ve
+JSON-LD, `kvkk.html` ve `script.js` içindeki `CONTACT_EMAIL` birlikte
+güncellenmelidir.
 
 ## Alan adı
 
@@ -47,22 +41,17 @@ Türkçe hâlini gösterir.
 
 ## Form altyapısı (Formspree)
 
-Form `action` değeri şu an `https://formspree.io/f/FORMSPREE_ID`. Bu haldeyken
-`script.js`, gönderimi sunucuya yollamaz; ziyaretçinin e-posta uygulamasını hazır
-bir mesajla açar (`mailto` yedeği).
+Form, "Randevu İsteği" adlı Formspree formuna bağlı:
+`https://formspree.io/f/xdeopwkw` (ücretsiz plan, ayda 50 mesaj). Gönderim
+`script.js` içinden `fetch` ile yapılır, sayfa yenilenmez.
 
-Formu gerçek e-postaya bağlamak için:
+Endpoint değiştirilir ve `action` değerinde yeniden `FORMSPREE_ID` yazarsa
+`script.js` gönderimi sunucuya yollamayı bırakır ve ziyaretçinin e-posta
+uygulamasını hazır bir mesajla açar (`mailto` yedeği).
 
-1. [formspree.io](https://formspree.io) üzerinde ücretsiz hesap açın (ayda 50 mesaj).
-2. Yeni bir form oluşturup alıcı adresi olarak psikologun e-postasını girin.
-3. Panelde verilen endpoint'teki form kimliğini alın ve `index.html` içindeki
-   `FORMSPREE_ID` yazısının yerine yazın.
-4. Formspree'nin gönderdiği doğrulama postasındaki bağlantıya tıklayın.
-5. Siteden gerçek bir test mesajı gönderip ulaştığını doğrulayın. Test mesajları
-   sahte içerik taşırsa Formspree bunları "Spam" sekmesine düşürebilir ve bildirim
-   göndermez; bu yüzden gerçekçi bir metinle test edin.
-
-Formun spam koruması, görünmeyen `_gotcha` tuzak alanıdır.
+Test ederken gerçekçi bir metin kullanın; sahte içerikli denemeleri Formspree
+"Spam" sekmesine düşürür ve bildirim göndermez. Formun spam koruması, görünmeyen
+`_gotcha` tuzak alanıdır.
 
 ## Yayınlamak (GitHub Pages)
 
